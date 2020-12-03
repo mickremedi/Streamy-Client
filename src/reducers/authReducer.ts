@@ -5,10 +5,7 @@ type authStateMap = {
     userId: string | null;
 };
 
-const authReducer = (
-    state = {} as authStateMap,
-    action: UserAction
-): authStateMap => {
+const authReducer = (state = {} as authStateMap, action: UserAction): authStateMap => {
     switch (action.type) {
         case SIGN_IN:
             return { ...state, isSignedIn: true, userId: action.payload };

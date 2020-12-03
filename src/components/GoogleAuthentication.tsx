@@ -29,9 +29,7 @@ const GoogleAuthentication = ({
                 })
                 .then(() => {
                     onAuthChange(gapi.auth2.getAuthInstance().isSignedIn.get());
-                    gapi.auth2
-                        .getAuthInstance()
-                        .isSignedIn.listen(onAuthChange);
+                    gapi.auth2.getAuthInstance().isSignedIn.listen(onAuthChange);
                 });
         });
     }, [signIn, signOut]);
@@ -49,20 +47,14 @@ const GoogleAuthentication = ({
             return null;
         } else if (isSignedIn) {
             return (
-                <button
-                    className="ui red google button"
-                    onClick={onSignOutClick}
-                >
+                <button className="ui red google button" onClick={onSignOutClick}>
                     <i className="google icon" />
                     Sign Out
                 </button>
             );
         } else {
             return (
-                <button
-                    className="ui red google button"
-                    onClick={onSignInClick}
-                >
+                <button className="ui red google button" onClick={onSignInClick}>
                     <i className="google icon" />
                     Sign In With Google
                 </button>
@@ -77,6 +69,4 @@ const mapStateToProps = (state: any): { isSignedIn: boolean } => {
     return { isSignedIn: state.auth.isSignedIn };
 };
 
-export default connect(mapStateToProps, { signIn, signOut })(
-    GoogleAuthentication
-);
+export default connect(mapStateToProps, { signIn, signOut })(GoogleAuthentication);

@@ -9,7 +9,7 @@ import {
 } from "../actions/types";
 
 type StreamState = {
-    [key: number]: Stream;
+    [key: string]: Stream;
 };
 
 const streamReducer = (state = {}, action: UserAction): StreamState => {
