@@ -4,7 +4,7 @@ import GoogleAuthentication from "./GoogleAuthentication";
 
 const Header = () => {
     return (
-        <div className="ui secondary menu" style={{ padding: "10px 0" }}>
+        <div className="ui secondary menu" style={{ padding: "20px 0 10px 0" }}>
             <Link to="/" className="item">
                 Streamy
             </Link>

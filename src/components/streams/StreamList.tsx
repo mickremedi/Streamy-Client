@@ -36,7 +36,7 @@ const StreamList = ({ fetchStreams, streams, currentUserId, isSignedIn }: PropsF
         }
     };
 
-    const renderList = () => {
+    const renderList = (streams: Stream[]) => {
         return streams.map((stream: Stream) => {
             return (
                 <div className="item" key={stream.id}>
@@ -65,11 +65,25 @@ const StreamList = ({ fetchStreams, streams, currentUserId, isSignedIn }: PropsF
         }
     };
 
+    if (!isSignedIn) {
+        return (
+            <div>
+                <h2>Streams</h2>
+                <div className="ui celled list">{renderList(streams)}</div>
+            </div>
+        );
+    }
+
+    const myStreams = streams.filter((stream) => stream.userId === currentUserId);
+    const otherStreams = streams.filter((stream) => stream.userId !== currentUserId);
     return (
         <div>
-            <h2>Streams</h2>
-            <div className="ui celled list">{renderList()}</div>
+            <h2>My Streams</h2>
+            <div className="ui celled list">{renderList(myStreams)}</div>
             {renderCreate()}
+
+            <h2>Other Streams</h2>
+            <div className="ui celled list">{renderList(otherStreams)}</div>
         </div>
     );
 };

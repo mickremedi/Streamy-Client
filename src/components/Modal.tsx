@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Button, Modal as UIModal } from "semantic-ui-react";
+import { Modal as UIModal } from "semantic-ui-react";
 
 type ComponentProps = {
     title: string;
